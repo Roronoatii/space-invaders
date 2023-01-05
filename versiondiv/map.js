@@ -1,54 +1,40 @@
-export let posX = 10;
-export let posY = 19;
-export let shotpos;
+export let alien = [];
+export const grid = document.querySelector(".grille");
 
-export function setPosX(valueX) {
-    posX = valueX;
-}
-export function setPosY(valueY) {
-    posY = valueY;
-}
-export function setShoot(shotY){
-    shotpos = shotY;
+export let incr = 0;
+export let posship = 230;
+export function setpoship(value) {
+    posship = value;
 }
 
-export const grid = document.querySelector(".grille")
 
 export function createmap(){
-    for (let i = 0; i < 20; i++) {
-        for (let j = 0; j < 20; j++) {
-            const newgrill = document.createElement("div");
+    for(let i=0; i< 240; i++){
+        let newgrill = document.createElement("div");
+        if(incr==0){
+            newgrill.classList.add("border_left");  
+        }
+        if(incr==19){
+        
+            newgrill.classList.add("border_right");  
+        }
+        if((i > 159) && (i < 180)){
+            newgrill.classList.add("border_top");  
 
-            if(j == 0 || j  == 19){
-                if(j ==0){
-                    newgrill.classList.add("border_left")
-                }else{
-                    newgrill.classList.add("border_right")
-                }
-            }
+        }
+        if(i>219){
+            newgrill.classList.add("border_bot");  
 
-            if(i == 19){
-                newgrill.classList.add("border_bot")
-            }
-
-            if(i < 3 && j < 15){
-                newgrill.classList.add("alien");
-
-            }
-
-
-
-            if (i == posY && j == posX){
-                newgrill.classList.add("tireur");
-    
-            }
-            if (i == shotpos && j == posX){
-                
-                newgrill.classList.add("laser");
-
-            }
-
-            grid.appendChild(newgrill);
+        }
+        if(i==posship){
+            newgrill.classList.add("tireur");  
+        }
+        grid.appendChild(newgrill);
+        incr ++;
+        if(incr == 20){
+            incr = 0;
         }
     }
 }
+
+export const newgrill = document.querySelectorAll("#grade div");

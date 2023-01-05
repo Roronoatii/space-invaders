@@ -2,11 +2,14 @@ import * as map from "./map.js";
 
 map.createmap();
 
-window.addEventListener('keydown', (e) => {
-    console.log(e);
-  
-  });
 
+
+let allDiv = document.querySelectorAll('.grille div');
+console.log(map.grid.classList.contains("border_left"));
+
+window.addEventListener('keydown', (e) => {
+  console.log(e);
+});
 document.onkeydown = Spacekey;
 function Spacekey(e) {
   e = e || window.event;
@@ -28,40 +31,38 @@ function Spacekey(e) {
   }
 }
 function player_left(){
-  if(map.posX !== 0){
-    map.setPosX(map.posX - 1);
+  
+  console.log(allDiv[map.posship].className);
 
-    map.grid.innerHTML = "";
-    map.createmap();
+  if(!allDiv[map.posship].classList.contains('border_left')){
+    allDiv[map.posship].classList.remove("tireur");
+    map.setpoship(map.posship - 1);
+    allDiv[map.posship].classList.add("tireur");
   }
 }
 function player_up(){
-  if(map.posY !== 16){
-    map.setPosY(map.posY - 1);
-
-    map.grid.innerHTML = "";
-    map.createmap();
+  if(!allDiv[map.posship].classList.contains('border_top')){
+    allDiv[map.posship].classList.remove("tireur");
+    map.setpoship(map.posship - 20);
+    allDiv[map.posship].classList.add("tireur");
   }
 }
 function player_right(){
-  if(map.posX !== 19){
-    map.setPosX(map.posX + 1);
-
-    map.grid.innerHTML = "";
-    map.createmap();
+  if(!allDiv[map.posship].classList.contains('border_right')){
+    allDiv[map.posship].classList.remove("tireur");
+    map.setpoship(map.posship + 1);
+    allDiv[map.posship].classList.add("tireur");
   }
 }
 function player_down(){
-  if(map.posY !==19){
-    map.setPosY(map.posY + 1);
-
-    map.grid.innerHTML = "";
-    map.createmap();
+  if(!allDiv[map.posship].classList.contains('border_bot')){
+    allDiv[map.posship].classList.remove("tireur");
+    map.setpoship(map.posship + 20);
+    allDiv[map.posship].classList.add("tireur");
   }
 }
 function player_shoot(){
+  allDiv[map.posship + 1].classList.add("tireur");
 
-  map.setShoot(map.posY - 1)
-  map.grid.innerHTML = "";
-  map.createmap();
+  
 }
