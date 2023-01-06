@@ -54,7 +54,8 @@ let fromLeft = false;
 
 export function AliensMovement(){
     let AllDiv = document.querySelectorAll('.grille div');
-    
+    AllDiv.forEach(div=>
+        div.classList.remove('boom'));
     for(let i = 0;i < poziAliens.length; i++){
         
         if(AllDiv[poziAliens[i]].classList.contains("border_right")){
