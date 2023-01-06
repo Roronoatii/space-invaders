@@ -69,7 +69,7 @@ export function AliensMovement(){
                 break;
             }
         }
-        if(!AllDiv[poziAliens[i]].classList.contains("tireur")){
+        if(!AllDiv[poziAliens[i]].classList.contains("tireur") && !AllDiv[poziAliens[i]].classList.contains("border_bot")){
             if(AllDiv[poziAliens[i]].classList.contains("border_left")){
                 if(fromLeft == true){
                     direction = 20;
