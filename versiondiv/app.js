@@ -66,7 +66,7 @@ function player_down(){
 }
 function player_shoot(){
   posShots = map.posship;
-  let boucle = setInterval(() =>{
+  let boucle = setInterval(() =>  {
       allDiv[posShots].classList.remove("laser");
       posShots = posShots - 20;
       allDiv[posShots].classList.add("laser");
